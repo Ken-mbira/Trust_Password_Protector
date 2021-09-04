@@ -91,6 +91,19 @@ class TestContact(unittest.TestCase):
         self.assertEqual(user_found,True)
         self.assertEqual(user_not_found,False)
 
+    def test_user_credible(self):
+        """
+        This checks whether the checking of credentials is done correctly
+        """
+        self.new_user.save_user()
+        other_user = User("Mbira","1234")
+        other_user.save_user()
+
+        user_credible = User.user_auth("Mbira","1234")
+
+        self.assertTrue(user_credible)
+
+
 
 if __name__ == '__main__':
     unittest.main()

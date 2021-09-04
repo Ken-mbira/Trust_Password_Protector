@@ -57,3 +57,13 @@ class User:
         if name in user_names:
             return True
         return False
+
+    @classmethod
+    def user_auth(cls,name,password):
+        """
+        This returns a boolean on whether the credentials given during logging in are correct
+        """
+        for user in cls.user_list:
+            if user.user_name == name and user.password == password:
+                return True
+        return False
