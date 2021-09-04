@@ -42,3 +42,16 @@ class User:
         for user in cls.user_list:
             if user.user_name == name:
                 return user
+
+    @classmethod
+    def user_found(cls,name):
+        """
+        Method that searches the user list for the user and returns either true or false depending on whether the user is found
+        Args:
+            name: This is the user's name being searched for
+        """
+        for user in cls.user_list:
+            if user.user_name == name:
+                return True
+            continue
+        

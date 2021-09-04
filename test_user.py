@@ -77,6 +77,17 @@ class TestContact(unittest.TestCase):
 
         self.assertEqual(found_user.password,other_user.password)
 
+    def test_assert_found(self):
+        """
+        This will check that the method to return a boolean if the user is found or not is working
+        """
+        self.new_user.save_user()
+        other_user = User("Mbira","4321")
+        other_user.save_user()
+        
+        user_found = User.user_found("Mbira")
+
+        self.assertTrue(user_found)
 
 
 if __name__ == '__main__':
