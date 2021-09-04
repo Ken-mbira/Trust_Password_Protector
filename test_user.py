@@ -23,12 +23,18 @@ class TestContact(unittest.TestCase):
         self.assertEqual(self.new_user.user_name,"James")
         self.assertEqual(self.new_user.password,"1234")
 
-    def test__save_user(self):
+    def test_save_user(self):
         """
         Test that checks if a user can be saved into the userlist
         """
         self.new_user.save_user()
         self.assertEqual(len(User.user_list),1)
+
+    def tearDown(self):
+        """
+        This is a method to run when each test has finished running
+        """
+        User.user_list = []
 
 if __name__ == '__main__':
     unittest.main()
