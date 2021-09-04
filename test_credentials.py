@@ -77,6 +77,29 @@ class Test_Credentials(unittest.TestCase):
 
         self.assertEqual(other_credential.user_name,found_credential.user_name)
 
+    def test_find_account(self):
+        """
+        This will check if we can find a credential by the name of the account
+        """
+        self.new_credential.save_credential()
+        other_credential = Cred("Twitter","Mbira","mbira@ken.com","1234")
+        other_credential.save_credential()
+
+        found_credential = Cred.find_account("Twitter")
+
+        self.assertEqual(other_credential.user_name,found_credential.user_name)
+
+    def test_found_account(self):
+        """
+        This will check if a boolean is returned on finding or not finding a credential
+        """
+        self.new_credential.save_credential()
+        other_credential = Cred("Twitter","Mbira","mbira@ken.com","1234")
+        other_credential.save_credential()
+
+        found = Cred.credential_found("Twitter")
+
+        self.assertTrue(found)
 
 if __name__ == "__main__":
     unittest.main()

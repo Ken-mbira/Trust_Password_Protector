@@ -42,3 +42,15 @@ class Cred:
         for credential in cls.credential_list:
             if credential.account_name == account:
                 return credential
+
+    @classmethod
+    def credential_found(cls,account):
+        """
+        This is a method that returns a boolean on finding or not finding a credential
+        Args:
+            account: This is the name of the account that is used to find the credential
+        """
+        for credential in cls.credential_list:
+            if credential.account_name == account:
+                return True
+        return False
