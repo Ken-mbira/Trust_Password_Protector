@@ -22,3 +22,9 @@ class Cred:
         This will add a newly created credential to the credentials list
         """
         Cred.credential_list.append(self)
+
+    def delete_credential(self):
+        """
+        This method will delete a credential from the credential list
+        """
+        Cred.credential_list.remove(self)
