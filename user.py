@@ -9,3 +9,8 @@ class User:
         """
         self.user_name = user_name
         self.password = password
+
+    user_list = [] #This is the list of the users
+
+    def save_user(self):
+        User.user_list.append(self)
