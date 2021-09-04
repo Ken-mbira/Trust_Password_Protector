@@ -28,3 +28,9 @@ class Cred:
         This method will delete a credential from the credential list
         """
         Cred.credential_list.remove(self)
+
+    def display_credentials(self):
+        """
+        This will display all the credentials in the credentials list
+        """
+        return Cred.credential_list
