@@ -36,5 +36,14 @@ class TestContact(unittest.TestCase):
         """
         User.user_list = []
 
+    def test_multiple_users(self):
+        """
+        This test will check if multiple users can be saved into the user list
+        """
+        self.new_user.save_user()
+        other_user = User("Mbira","1234")
+        other_user.save_user()
+        self.assertEqual(len(User.user_list),2)
+
 if __name__ == '__main__':
     unittest.main()
