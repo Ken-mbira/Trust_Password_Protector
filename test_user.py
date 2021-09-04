@@ -65,6 +65,19 @@ class TestContact(unittest.TestCase):
         other_user.save_user()
         self.assertEqual(User.display_users(self),User.user_list)
 
+    def test_find_user(self):
+        """
+        This will check if we can locate a user by their name
+        """
+        self.new_user.save_user()
+        other_user = User("Mbira","4321")
+        other_user.save_user()
+
+        found_user = User.find_user("Mbira")
+
+        self.assertEqual(found_user.password,other_user.password)
+
+
 
 if __name__ == '__main__':
     unittest.main()

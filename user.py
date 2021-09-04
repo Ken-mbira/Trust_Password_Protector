@@ -29,3 +29,16 @@ class User:
         This will return all the users in the users list
         """
         return User.user_list
+
+    @classmethod
+    def find_user(cls,name):
+        """
+        Method that takes in a user's name and returns the users information
+        Args:
+            name: This is the user's name that is to be found
+        Returns:
+            user details of the person that matches the name
+        """
+        for user in cls.user_list:
+            if user.user_name == name:
+                return user
