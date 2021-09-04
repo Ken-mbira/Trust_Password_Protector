@@ -1,6 +1,3 @@
-from user import User
-
-
 class Cred:
     """
     This is a class that makes the user credentials for their different accounts
@@ -34,3 +31,14 @@ class Cred:
         This will display all the credentials in the credentials list
         """
         return Cred.credential_list
+
+    @classmethod
+    def find_account(cls,account):
+        """
+        This will return the credentials after being given an account name
+        Args:
+            account_name: This is the account of the credentials that will be used to locate the credential
+        """
+        for credential in cls.credential_list:
+            if credential.account_name == account:
+                return credential
