@@ -13,4 +13,13 @@ class User:
     user_list = [] #This is the list of the users
 
     def save_user(self):
+        """
+        This will add a new user to the user list
+        """
         User.user_list.append(self)
+
+    def delete_user(self):
+        """
+        This will remove a user from the user list
+        """
+        User.user_list.remove(self)
