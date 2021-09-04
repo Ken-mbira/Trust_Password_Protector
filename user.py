@@ -50,8 +50,10 @@ class User:
         Args:
             name: This is the user's name being searched for
         """
+        user_names = []
         for user in cls.user_list:
-            if user.user_name == name:
-                return True
-            continue
-        
+            user_names.append(user.user_name)
+
+        if name in user_names:
+            return True
+        return False

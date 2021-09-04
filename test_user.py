@@ -86,8 +86,10 @@ class TestContact(unittest.TestCase):
         other_user.save_user()
         
         user_found = User.user_found("Mbira")
+        user_not_found = User.user_found("Kinuthia")
 
-        self.assertTrue(user_found)
+        self.assertEqual(user_found,True)
+        self.assertEqual(user_not_found,False)
 
 
 if __name__ == '__main__':
