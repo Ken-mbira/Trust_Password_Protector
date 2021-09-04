@@ -56,5 +56,15 @@ class TestContact(unittest.TestCase):
         self.new_user.delete_user()
         self.assertEqual(len(User.user_list),1)
 
+    def test_display_user(self):
+        """
+        This will check if a list of users can be displayed
+        """
+        self.new_user.save_user()
+        other_user = User("Mbira","1234")
+        other_user.save_user()
+        self.assertEqual(User.display_users(self),User.user_list)
+
+
 if __name__ == '__main__':
     unittest.main()

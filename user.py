@@ -23,3 +23,9 @@ class User:
         This will remove a user from the user list
         """
         User.user_list.remove(self)
+
+    def display_users(self):
+        """
+        This will return all the users in the users list
+        """
+        return User.user_list
