@@ -98,8 +98,18 @@ class Test_Credentials(unittest.TestCase):
         other_credential.save_credential()
 
         found = Cred.credential_found("Twitter")
+        not_found = Cred.credential_found("dsfdsf")
 
         self.assertTrue(found)
+        self.assertFalse(not_found)
+
+    def test_length_password(self):
+        """
+        This is to make sure that the passwords created match the length specified
+        """
+        password = Cred.password_generator(6)
+
+        self.assertEqual(len(password),6)
 
 if __name__ == "__main__":
     unittest.main()

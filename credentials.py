@@ -1,3 +1,6 @@
+import random
+import string
+
 class Cred:
     """
     This is a class that makes the user credentials for their different accounts
@@ -54,3 +57,13 @@ class Cred:
             if credential.account_name == account:
                 return True
         return False
+
+    @classmethod
+    def password_generator(cls,length):
+        """
+        this method generates a random password with letters, symbols and digits
+        Args: 
+            length: This is the desired length of the password
+        """
+        characters = string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
+        return "".join(random.choice(characters) for i in range(length))
