@@ -23,5 +23,12 @@ class Test_Credentials(unittest.TestCase):
         self.assertEqual(self.new_credential.password,"1234")
         self.assertEqual(self.new_credential.user_name,"mbira")
 
+    def test_save_cred(self):
+        """
+        This will test on whether we can add a credential to the credentials list
+        """
+        self.new_credential.save_credential()
+        self.assertEqual(len(Cred.credential_list),1)
+
 if __name__ == "__main__":
     unittest.main()

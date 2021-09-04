@@ -14,3 +14,11 @@ class Cred:
         self.user_name = user_name
         self.email = email
         self.password = password
+
+    credential_list = []
+
+    def save_credential(self):
+        """
+        This will add a newly created credential to the credentials list
+        """
+        Cred.credential_list.append(self)
