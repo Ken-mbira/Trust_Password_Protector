@@ -130,6 +130,7 @@ Use the following commands to help you get around:
                     2. "dc" => To view all your credentials
                     3. "fc" => To find a specific credential
                     4. "xc" => To delete a credential
+                    5. "x" => To leave your account
                     """)
                     user_choice = input().lower()
                     if user_choice == "nc":
@@ -186,9 +187,10 @@ Use the following commands to help you get around:
                                 else:
                                     print(f"The account {search_account_name} was not deleted.")
                             else:
-                                print("Sorry but the inputted account name does not seem to exist!")
+                                print(f"""
+                    Sorry but the inputted account name {search_account_name} does not seem to exist!""")
 
-                    elif user_choice == "xa":
+                    elif user_choice == "x":
                         break
             else:
                 print("Sorry, either your username or password is wrong")
