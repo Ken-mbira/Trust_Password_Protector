@@ -97,23 +97,25 @@ def main():
     Hello and welcome to TRUST
 
 Use the following commands to help you get around:
-(i) "n" => To create a new account
-(ii)"lg" => To login to an existing account
+(i) "lg" => To login to an account
+(ii)"x" => To leave the application
                 """,)
         
         choice = input().lower()
-        if choice == "n":
-            print('\n')
-            print("Enter your user name:")
-            user_name = input()
-            print("Enter your password:")
-            user_password = input()
-            save_user(create_user(user_name,user_password))
+        if choice == "lg":
+            have_account = input("Do you have an account? Y/N: ").lower()
+            if have_account.startswith("n"):
+                print('\n')
+                print("Enter your user name:")
+                user_name = input()
+                print("Enter your password:")
+                user_password = input()
+                save_user(create_user(user_name,user_password))
 
-            print("Please wait...")
-            time.sleep(1)
-            print("CONGRATULATIONS YOUR ACCOUNT HAS BEEN CREATED.")
-            print('\n')
+                print("Please wait...")
+                time.sleep(1)
+                print("CONGRATULATIONS YOUR ACCOUNT HAS BEEN CREATED.")
+                print('\n')
             print("Please login to your account...")
             print("Enter your user name:")
             user_name_input = input()
@@ -194,6 +196,9 @@ Use the following commands to help you get around:
                         break
             else:
                 print("Sorry, either your username or password is wrong")
+        elif choice == "x":
+            break
+
 
 
 if __name__ == '__main__':
