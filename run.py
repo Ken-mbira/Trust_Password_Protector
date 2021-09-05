@@ -103,7 +103,7 @@ def main():
     while True:
         txt = "TRUST"
         banner = pyfiglet.figlet_format(txt, font="isometric2", justify="center")
-        print(colored(banner,'red'))
+        print(colored(banner,'green'))
         print('\n')
         table = Table(title = f"Use the following commands to help you get around: ")
         table.add_column("Command", justify="right", style="green", no_wrap=True)
@@ -126,7 +126,7 @@ def main():
 
                 print("Please wait...")
                 time.sleep(1)
-                print(f"CONGRATULATIONS {user_name} YOUR ACCOUNT HAS BEEN CREATED.")
+                print(colored(f"Congratulations {user_name} your account was created successfully!","green"))
                 print('\n')
             print("Please login to your account...")
             print('\n')
@@ -137,14 +137,17 @@ def main():
             if authenticate_user(user_name_input,user_password_input):
                 print(f"Welcome {user_name_input}, you have successfully logged in to your account.")
                 while True:
-                    print("""
-                    You can use the following commands to get around:
-                    1. "nc" => To create a new credential
-                    2. "dc" => To view all your credentials
-                    3. "fc" => To find a specific credential
-                    4. "xc" => To delete a credential
-                    5. "x" => To leave your account
-                    """)
+                    table = Table(title = f"Use the following commands to help you get around: ")
+                    table.add_column("Command", justify="right", style="green", no_wrap=True)
+                    table.add_column("Instruction", style="red")
+
+                    table.add_row(f"nc", f"To create a new credential")
+                    table.add_row(f"dc", f"To view all your credentials")
+                    table.add_row("fc", f"To find a specific credential")
+                    table.add_row("xc","To delete a credential")
+                    table.add_row("x","To leave your account")
+                    console = Console()
+                    console.print(table)
                     user_choice = input().lower()
                     if user_choice == "nc":
                         print("To create a new credential input the following fields:")
@@ -229,6 +232,9 @@ def main():
                 print("Sorry but you do not seem to be a user on the application and so cannot have the list of users!")
                     
         elif choice == "x":
+            txt = "GOODBYE"
+            banner = pyfiglet.figlet_format(txt, font="standard", justify="center")
+            print(colored(banner,'red'))
             break
 
 
