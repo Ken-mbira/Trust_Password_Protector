@@ -94,11 +94,11 @@ def credential_found(account):
 def main():
     while True:
         print("""
-                    Hello and welcome to TRUST
+    Hello and welcome to TRUST
 
-                Use the following commands to help you get around:
-                (i) "n" => To create a new account
-                (ii)"lg" => To login to an existing account
+Use the following commands to help you get around:
+(i) "n" => To create a new account
+(ii)"lg" => To login to an existing account
                 """,)
         
         choice = input().lower()
@@ -129,6 +129,7 @@ def main():
                     1. "nc" => To create a new credential
                     2. "dc" => To view all your credentials
                     3. "fc" => To find a specific credential
+                    4. "xc" => To delete a credential
                     """)
                     user_choice = input().lower()
                     if user_choice == "nc":
@@ -170,6 +171,18 @@ def main():
                       Username  =>  {account.user_name}   
                       Email     =>  {account.email}       
                       Password  =>  {account.password}    """)
+
+                    elif user_choice == "xc":
+                            search_account_name = input("Please enter the account name of the credential you would like to be deleted:")
+                            account = find_account(search_account_name)
+                            if credential_found(search_account_name):
+                                confirmation = input(f"Are you sure, this action will permanently remove {search_account_name} from your list of credentials. Y/N: ").lower()
+                                if confirmation.startswith("y"):
+                                    delete_credential(account)
+                                else:
+                                    print(f"The account {search_account_name} was not deleted.")
+                            else:
+                                print("Sorry but the inputted account name does not seem to exist!")
 
                     elif user_choice == "xa":
                         break
