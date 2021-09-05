@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from rich import print as rprint
 from user import User
 from credentials import Cred
 import time
@@ -94,7 +95,8 @@ def credential_found(account):
 
 def main():
     while True:
-        print("""
+        rprint("[italic red]Hello[/italic red] World!")
+        print(f"""
     Hello and welcome to TRUST
 
 Use the following commands to help you get around:
@@ -109,7 +111,7 @@ Use the following commands to help you get around:
             if have_account.startswith("n"):
                 print('\n')
                 user_name = input("Enter your user name: ")
-                user_password = getpass.getpass("Enter you pin")
+                user_password = getpass.getpass("Enter you pin: ")
                 save_user(create_user(user_name,user_password))
 
                 print("Please wait...")
