@@ -101,16 +101,19 @@ def credential_found(account):
 
 def main():
     while True:
-        txt = "TRUST."
+        txt = "TRUST"
         banner = pyfiglet.figlet_format(txt, font="isometric2", justify="center")
         print(colored(banner,'red'))
         print('\n')
-        rprint(f"""
-                                Use the following commands to help you get around:
-                                1. "lg" => To login to an account
-                                2. "du" => To display a list of users who have accounts in the app
-                                3. "x" => To leave the application
-                """)
+        table = Table(title = f"Use the following commands to help you get around: ")
+        table.add_column("Command", justify="right", style="green", no_wrap=True)
+        table.add_column("Instruction", style="red")
+
+        table.add_row(f"lg", f"To login to an account")
+        table.add_row(f"du", f"To display a list of users who have accounts on this app")
+        table.add_row("x", f"To leave the application")
+        console = Console()
+        console.print(table)
         
         choice = input().lower()
         if choice == "lg":
