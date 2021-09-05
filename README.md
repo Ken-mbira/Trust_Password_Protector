@@ -16,6 +16,11 @@ For the application to run, the following requirements have to be met:
 3. Install pyfiglet
 4. Install rich
 
+In case you're unsure how to install the above libraries:
+- pip install termcolor
+- pip install pyfiglet
+- pip install rich
+
 ## Set up Instructions
 To have the following application in your application follow the following steps:
 1. Clone this repository onto the desired location on your local machine using "git clone https://github.com/Ken-mbira/Trust_Password_Protector.git" in your terminal.
