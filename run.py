@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 from rich import print as rprint
+from rich.console import Console
+from rich.table import Table
 from user import User
 from credentials import Cred
 import time
@@ -95,7 +97,6 @@ def credential_found(account):
 
 def main():
     while True:
-        rprint("[italic red]Hello[/italic red] World!")
         print(f"""
     Hello and welcome to TRUST
 
@@ -159,23 +160,34 @@ Use the following commands to help you get around:
                     elif user_choice == "dc":
                         if display_credentials():
                             print("Here are the saved credentials:")
+                            print('\n')
                             for credential in display_credentials():
-                                print(f"""
-                    
-                      Platform  =>  {credential.account_name}
-                      Username  =>  {credential.user_name}   
-                      Email     =>  {credential.email}       
-                      Password  =>  {credential.password}    """)
+                                table = Table(title = f"{credential.account_name}")
+                                table.add_column("Detail", justify="right", style="cyan", no_wrap=True)
+                                table.add_column("Data", style="magenta")
 
+                                table.add_row(f"Account", f"{credential.account_name}")
+                                table.add_row(f"User Name", f"{credential.user_name}")
+                                table.add_row("Email", f"{credential.email}")
+                                table.add_row("Password", f"{credential.password}")
+                                console = Console()
+                                console.print(table)
+                                print('\n')
                     elif user_choice == "fc":
                         search_account_name = input("Enter the name of the account that you are searching for: ")
                         if credential_found(search_account_name):
                             account = find_account(search_account_name)
-                            print(f"""
-                      Platform  =>  {account.account_name}
-                      Username  =>  {account.user_name}   
-                      Email     =>  {account.email}       
-                      Password  =>  {account.password}    """)
+                            table = Table(title = f"{account.account_name}")
+                            table.add_column("Detail", justify="right", style="cyan", no_wrap=True)
+                            table.add_column("Data", style="magenta")
+
+                            table.add_row(f"Account", f"{account.account_name}")
+                            table.add_row(f"User Name", f"{account.user_name}")
+                            table.add_row("Email", f"{account.email}")
+                            table.add_row("Password", f"{account.password}")
+                            console = Console()
+                            console.print(table)
+                            print('\n')
                         else:
                             print(f"""
                     Sorry but the inputted account name {search_account_name} does not seem to exist!""")
