@@ -24,7 +24,8 @@ class User:
         """
         User.user_list.remove(self)
 
-    def display_users(self):
+    @classmethod
+    def display_users(cls):
         """
         This will return all the users in the users list
         """

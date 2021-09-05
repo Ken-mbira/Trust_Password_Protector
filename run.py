@@ -13,7 +13,7 @@ def create_user(name,pin):
 
 def delete_user(user):
     """
-    Function to delete a credential
+    Function to delete a user
     """
     user.delete_user()
 
@@ -29,7 +29,7 @@ def authenticate_user(username,password):
     """
     return User.user_auth(username,password)
 
-def display_user():
+def display_users():
     """
     This will show all the users that have an account
     """
@@ -97,8 +97,9 @@ def main():
     Hello and welcome to TRUST
 
 Use the following commands to help you get around:
-(i) "lg" => To login to an account
-(ii)"x" => To leave the application
+1. "lg" => To login to an account
+2. "du" => To display a list of users who have accounts in the app
+3. "x" => To leave the application
                 """,)
         
         choice = input().lower()
@@ -114,7 +115,7 @@ Use the following commands to help you get around:
 
                 print("Please wait...")
                 time.sleep(1)
-                print("CONGRATULATIONS YOUR ACCOUNT HAS BEEN CREATED.")
+                print(f"CONGRATULATIONS {user_name} YOUR ACCOUNT HAS BEEN CREATED.")
                 print('\n')
             print("Please login to your account...")
             print("Enter your user name:")
@@ -124,7 +125,7 @@ Use the following commands to help you get around:
             print('\n')
             time.sleep(0.5)
             if authenticate_user(user_name_input,user_password_input):
-                print(f"Welcome {user_name}, you have successfully logged in to your account.")
+                print(f"Welcome {user_name_input}, you have successfully logged in to your account.")
                 while True:
                     print("""
                     You can use the following commands to get around:
@@ -196,6 +197,15 @@ Use the following commands to help you get around:
                         break
             else:
                 print("Sorry, either your username or password is wrong")
+        elif choice == "du":
+            user_name = input("Please enter your username to verify that you are a user on this application: ")
+            if user_found(user_name):
+                print("The users in this application are: ")
+                for user in display_users():
+                    print(f"{user.user_name}")
+            else:
+                print("Sorry but you do not seem to be a user on the application and so cannot have the list of users!")
+                    
         elif choice == "x":
             break
 
