@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 
+from termcolor import colored
+import pyfiglet
 from rich import print as rprint
 from rich.console import Console
 from rich.table import Table
+from rich.panel import Panel
+from rich.text import Text
 from user import User
 from credentials import Cred
 import time
@@ -97,14 +101,16 @@ def credential_found(account):
 
 def main():
     while True:
-        print(f"""
-    Hello and welcome to TRUST
-
-Use the following commands to help you get around:
-1. "lg" => To login to an account
-2. "du" => To display a list of users who have accounts in the app
-3. "x" => To leave the application
-                """,)
+        txt = "TRUST."
+        banner = pyfiglet.figlet_format(txt, font="isometric2", justify="center")
+        print(colored(banner,'red'))
+        print('\n')
+        rprint(f"""
+                                Use the following commands to help you get around:
+                                1. "lg" => To login to an account
+                                2. "du" => To display a list of users who have accounts in the app
+                                3. "x" => To leave the application
+                """)
         
         choice = input().lower()
         if choice == "lg":
@@ -175,6 +181,7 @@ Use the following commands to help you get around:
                                 print('\n')
                     elif user_choice == "fc":
                         search_account_name = input("Enter the name of the account that you are searching for: ")
+                        print('\n')
                         if credential_found(search_account_name):
                             account = find_account(search_account_name)
                             table = Table(title = f"{account.account_name}")
