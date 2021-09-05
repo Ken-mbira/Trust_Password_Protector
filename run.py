@@ -165,12 +165,16 @@ Use the following commands to help you get around:
 
                     elif user_choice == "fc":
                         search_account_name = input("Enter the name of the account that you are searching for: ")
-                        account = find_account(search_account_name)
-                        print(f"""
+                        if credential_found(search_account_name):
+                            account = find_account(search_account_name)
+                            print(f"""
                       Platform  =>  {account.account_name}
                       Username  =>  {account.user_name}   
                       Email     =>  {account.email}       
                       Password  =>  {account.password}    """)
+                        else:
+                            print(f"""
+                    Sorry but the inputted account name {search_account_name} does not seem to exist!""")
 
                     elif user_choice == "xc":
                             search_account_name = input("Please enter the account name of the credential you would like to be deleted:")
