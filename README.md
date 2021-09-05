@@ -12,6 +12,9 @@ This is an application that helps its user to keep the credentials for their var
 ## Dependencies
 For the application to run, the following requirements have to be met:
 1. One must have at least python3 installed on their device.
+2. Install termcolor
+3. Install pyfiglet
+4. Install rich
 
 ## Set up Instructions
 To have the following application in your application follow the following steps:
