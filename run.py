@@ -3,6 +3,7 @@
 from user import User
 from credentials import Cred
 import time
+import getpass
 
 def create_user(name,pin):
     """
@@ -107,10 +108,8 @@ Use the following commands to help you get around:
             have_account = input("Do you have an account? Y/N: ").lower()
             if have_account.startswith("n"):
                 print('\n')
-                print("Enter your user name:")
-                user_name = input()
-                print("Enter your password:")
-                user_password = input()
+                user_name = input("Enter your user name: ")
+                user_password = getpass.getpass("Enter you pin")
                 save_user(create_user(user_name,user_password))
 
                 print("Please wait...")
@@ -118,10 +117,9 @@ Use the following commands to help you get around:
                 print(f"CONGRATULATIONS {user_name} YOUR ACCOUNT HAS BEEN CREATED.")
                 print('\n')
             print("Please login to your account...")
-            print("Enter your user name:")
-            user_name_input = input()
-            print("Enter your password:")
-            user_password_input = input()
+            print('\n')
+            user_name_input = input("Enter your user name: ")
+            user_password_input = input("Enter your password: ")
             print('\n')
             time.sleep(0.5)
             if authenticate_user(user_name_input,user_password_input):
