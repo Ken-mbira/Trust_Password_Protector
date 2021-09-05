@@ -133,9 +133,10 @@ def main():
             user_name_input = input("Enter your user name: ")
             user_password_input = input("Enter your password: ")
             print('\n')
-            time.sleep(0.5)
+            time.sleep(1)
             if authenticate_user(user_name_input,user_password_input):
-                print(f"Welcome {user_name_input}, you have successfully logged in to your account.")
+                print(colored(f"Welcome {user_name_input}, you have successfully logged in to your account...",'green'))
+                time.sleep(0.5)
                 while True:
                     table = Table(title = f"Use the following commands to help you get around: ")
                     table.add_column("Command", justify="right", style="green", no_wrap=True)
@@ -168,9 +169,13 @@ def main():
                             credential_password = int(input("Enter your credential password"))
                         save_credential(create_credential(account_name,credential_user_name,user_email,credential_password))
                         print('\n')
-                        print(f"YOUR CREDENTIAL CREATION FOR YOUR {account_name} ACCOUNT WAS SUCCESSFUL!")
+                        print("Please wait...")
+                        time.sleep(0.5)
+                        print(colored(f"YOUR CREDENTIAL CREATION FOR YOUR {account_name} ACCOUNT WAS SUCCESSFUL!",'green'))
                     elif user_choice == "dc":
                         if display_credentials():
+                            print("Please wait...")
+                            time.sleep(0.5)
                             print("Here are the saved credentials:")
                             print('\n')
                             for credential in display_credentials():
@@ -188,6 +193,9 @@ def main():
                     elif user_choice == "fc":
                         search_account_name = input("Enter the name of the account that you are searching for: ")
                         print('\n')
+                        print("Please wait...")
+                        time.sleep(0.5)
+                        print('\n')
                         if credential_found(search_account_name):
                             account = find_account(search_account_name)
                             table = Table(title = f"{account.account_name}")
@@ -202,8 +210,8 @@ def main():
                             console.print(table)
                             print('\n')
                         else:
-                            print(f"""
-                    Sorry but the inputted account name {search_account_name} does not seem to exist!""")
+                            print(colored("""
+                    Sorry but the inputted account name {search_account_name} does not seem to exist!""",'red'))
 
                     elif user_choice == "xc":
                             search_account_name = input("Please enter the account name of the credential you would like to be deleted:")
@@ -213,10 +221,13 @@ def main():
                                 if confirmation.startswith("y"):
                                     delete_credential(account)
                                 else:
+                                    print('\n')
+                                    print("Please wait...")
+                                    time.sleep(0.5)
                                     print(f"The account {search_account_name} was not deleted.")
                             else:
-                                print(f"""
-                    Sorry but the inputted account name {search_account_name} does not seem to exist!""")
+                                print(colored(f"""
+                    Sorry but the inputted account name {search_account_name} does not seem to exist!""",'red'))
 
                     elif user_choice == "x":
                         break
