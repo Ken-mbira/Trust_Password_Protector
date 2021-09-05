@@ -29,7 +29,8 @@ class Cred:
         """
         Cred.credential_list.remove(self)
 
-    def display_credentials(self):
+    @classmethod
+    def display_credentials(cls):
         """
         This will display all the credentials in the credentials list
         """
