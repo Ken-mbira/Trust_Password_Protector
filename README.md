@@ -1,5 +1,5 @@
 # TRUST PASSWORD PROTECTOR
-<img src="TRUST.png">
+<img src="Trust1.png">
 This is an application that helps its user to keep the credentials for their various accounts and takes away the tedious quest of trying to remember an account username or password. The application runs on the terminal.
 
 ## Contributors
@@ -29,6 +29,7 @@ To have the following application in your application follow the following steps
 4. Run "./run.py"
 
 ## Application Description
+<img src="Trust2.png">
 The application makes use of two classes, the user class and the credentials class. Inside the user class lies a method to instantiate an object or rather instance of the user class. The object contains the user name and the password. The user is then saved. This information will be used when logging in to the user's account
 
 Next is the credentials class where the same happens in terms of instance of the credential where all the data about the credential is taken in such as: 
