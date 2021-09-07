@@ -131,11 +131,12 @@ def main():
             print("Please login to your account...")
             print('\n')
             user_name_input = input("Enter your user name: ")
-            user_password_input = input("Enter your password: ")
+            user_password_input = getpass.getpass("Enter your password: ")
             print('\n')
             time.sleep(1)
             if authenticate_user(user_name_input,user_password_input):
                 print(colored(f"Welcome {user_name_input}, you have successfully logged in to your account...",'green'))
+                print('\n')
                 time.sleep(0.5)
                 while True:
                     table = Table(title = f"Use the following commands to help you get around: ")
@@ -166,12 +167,14 @@ def main():
                             desired_length = int(input("Enter the length of the password you wish to generate, only digits: "))
                             credential_password = generate_password(desired_length)
                         elif credential_password_choice.startswith("n"):
-                            credential_password = int(input("Enter your credential password"))
+                            credential_password = int(getpass.getpass("Enter your credential password"))
                         save_credential(create_credential(account_name,credential_user_name,user_email,credential_password))
                         print('\n')
                         print("Please wait...")
                         time.sleep(0.5)
+                        print('\n')
                         print(colored(f"YOUR CREDENTIAL CREATION FOR YOUR {account_name} ACCOUNT WAS SUCCESSFUL!",'green'))
+                        print('\n')
                     elif user_choice == "dc":
                         if display_credentials():
                             print("Please wait...")
@@ -210,8 +213,9 @@ def main():
                             console.print(table)
                             print('\n')
                         else:
-                            print(colored("""
+                            print(colored(f"""
                     Sorry but the inputted account name {search_account_name} does not seem to exist!""",'red'))
+                            print('\n')
 
                     elif user_choice == "xc":
                             search_account_name = input("Please enter the account name of the credential you would like to be deleted:")
@@ -228,8 +232,10 @@ def main():
                             else:
                                 print(colored(f"""
                     Sorry but the inputted account name {search_account_name} does not seem to exist!""",'red'))
+                                print('\n')
 
                     elif user_choice == "x":
+                        print('\n')
                         break
             else:
                 print("Sorry, either your username or password is wrong")
@@ -243,7 +249,7 @@ def main():
                 print("Sorry but you do not seem to be a user on the application and so cannot have the list of users!")
                     
         elif choice == "x":
-            txt = "GOODBYE"
+            txt = "ALOHA"
             banner = pyfiglet.figlet_format(txt, font="standard", justify="center")
             print(colored(banner,'red'))
             break
