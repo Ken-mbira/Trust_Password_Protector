@@ -25,8 +25,9 @@ In case you're unsure how to install the above libraries:
 To have the following application in your application follow the following steps:
 1. Clone this repository onto the desired location on your local machine using "git clone https://github.com/Ken-mbira/Trust_Password_Protector.git" in your terminal.
 2. Navigate to the location of the application on your terminal
-3. Run "chmod +x run.py"
-4. Run "./run.py"
+3. Create a virtual environment in the same directory and run <code>pip install -r requirements.txt</code>
+4. Run "chmod +x run.py"
+5. Run "./run.py"
 
 ## Application Description
 <img src="Trust2.png">
